@@ -11,7 +11,9 @@ import {
   Settings,
   LogOut,
   Sparkles,
+  Palette,
 } from 'lucide-react';
+import { useTheme } from '@/context/ThemeContext';
 
 const NAV_ITEMS = [
   { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
@@ -22,6 +24,7 @@ const NAV_ITEMS = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
 
   return (
     <aside
@@ -52,7 +55,8 @@ export function Sidebar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 0 16px rgba(16,185,129,0.4)',
+            boxShadow: 'var(--shadow-glow)',
+            transition: 'all 0.3s ease',
           }}
         >
           <Sparkles size={18} color="white" />
@@ -97,6 +101,56 @@ export function Sidebar() {
             </Link>
           );
         })}
+
+        {/* Theme Switcher */}
+        <div style={{ marginTop: '1.5rem' }}>
+          <p
+            style={{
+              fontSize: '0.65rem',
+              fontWeight: 600,
+              color: 'var(--text-muted)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              padding: '0 0.5rem',
+              marginBottom: '0.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}
+          >
+            <Palette size={12} /> Personalização
+          </p>
+          <div style={{ display: 'flex', gap: '0.5rem', padding: '0 0.5rem' }}>
+            <button
+              onClick={() => setTheme('emerald')}
+              style={{
+                width: '24px',
+                height: '24px',
+                borderRadius: '50%',
+                background: '#10b981',
+                border: theme === 'emerald' ? '2px solid white' : '2px solid transparent',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                boxShadow: theme === 'emerald' ? '0 0 10px rgba(16,185,129,0.5)' : 'none'
+              }}
+              title="Esmeralda"
+            />
+            <button
+              onClick={() => setTheme('pink')}
+              style={{
+                width: '24px',
+                height: '24px',
+                borderRadius: '50%',
+                background: '#db2777',
+                border: theme === 'pink' ? '2px solid white' : '2px solid transparent',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                boxShadow: theme === 'pink' ? '0 0 10px rgba(219,39,119,0.5)' : 'none'
+              }}
+              title="Rosa"
+            />
+          </div>
+        </div>
       </nav>
 
       {/* Bottom */}

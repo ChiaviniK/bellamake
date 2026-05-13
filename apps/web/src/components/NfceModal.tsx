@@ -72,7 +72,7 @@ function ChaveFormatada({ chave }: { chave: string }) {
         style={{
           flexShrink: 0,
           padding: '6px',
-          background: copied ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.05)',
+          background: copied ? 'rgba(var(--primary-rgb), 0.2)' : 'rgba(255,255,255,0.05)',
           border: '1px solid rgba(255,255,255,0.08)',
           borderRadius: '8px',
           color: copied ? 'var(--primary)' : '#6b7280',
@@ -106,7 +106,8 @@ export function NfceModal({ data, total, onClose }: NfceModalProps) {
   if (!data) return null;
 
   const isSimulado = data.status === 'SIMULADO';
-  const statusColor = isSimulado ? '#f59e0b' : '#10b981';
+  const statusColor = isSimulado ? 'var(--accent)' : 'var(--primary)';
+  const statusRgb = isSimulado ? 'var(--accent-rgb)' : 'var(--primary-rgb)';
   const statusLabel = isSimulado ? 'SIMULADO' : 'AUTORIZADO';
 
   return (
@@ -161,12 +162,12 @@ export function NfceModal({ data, total, onClose }: NfceModalProps) {
                     width: 48,
                     height: 48,
                     borderRadius: '14px',
-                    background: `${statusColor}18`,
+                    background: `rgba(var(--${isSimulado ? 'accent' : 'primary'}-rgb), 0.1)`,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: statusColor,
-                    boxShadow: `0 0 20px ${statusColor}30`,
+                    boxShadow: `0 0 20px rgba(var(--${isSimulado ? 'accent' : 'primary'}-rgb), 0.2)`,
                   }}
                 >
                   {isSimulado ? <AlertTriangle size={24} /> : <CheckCircle2 size={24} />}

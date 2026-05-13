@@ -37,7 +37,7 @@ interface CartItem extends Product {
 }
 
 const PAYMENT_METHODS = [
-  { id: 'PIX', label: 'PIX', icon: QrCode, color: '#10b981' },
+  { id: 'PIX', label: 'PIX', icon: QrCode, color: 'var(--primary)' },
   { id: 'DINHEIRO', label: 'Dinheiro', icon: Banknote, color: '#f59e0b' },
   { id: 'CARTAO_CREDITO', label: 'Crédito', icon: CreditCard, color: '#3b82f6' },
   { id: 'CARTAO_DEBITO', label: 'Débito', icon: CreditCard, color: '#8b5cf6' },
@@ -176,7 +176,7 @@ export default function PDVPage() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#050505]">
+    <div className="flex h-screen overflow-hidden bg-transparent">
       {/* LEFT COLUMN: Scanner + Items */}
       <div className="flex-1 flex flex-col p-8 gap-6 overflow-hidden">
         {/* Header */}
@@ -451,8 +451,8 @@ export default function PDVPage() {
             exit={{ opacity: 0, y: 60, scale: 0.9 }}
             className={`fixed bottom-8 left-1/2 -translate-x-1/2 px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3 z-50 font-bold text-white ${
               message.type === 'success'
-                ? 'bg-gradient-to-r from-emerald-600 to-teal-600'
-                : 'bg-gradient-to-r from-red-600 to-rose-600'
+                ? 'bg-primary'
+                : 'bg-red-400'
             }`}
           >
             {message.type === 'success' ? <CheckCircle2 size={22} /> : <XCircle size={22} />}
