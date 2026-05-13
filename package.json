@@ -11,12 +11,10 @@
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "postinstall": "npx prisma generate --schema=apps/api/prisma/schema.prisma"
+    "postinstall": "cd apps/api && npx prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^7.8.0"
-  },
-  "devDependencies": {
+    "@prisma/client": "^7.8.0",
     "prisma": "^7.8.0"
   }
 }
