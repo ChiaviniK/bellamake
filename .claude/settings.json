@@ -1,0 +1,8 @@
+{
+  "project_name": "PROJ_DANIEL",
+  "agentic_workflow": "SDD + RPI",
+  "graphify_enabled": true,
+  "rules_path": ".claude/rules",
+  "specs_path": "docs/specs",
+  "tasks_path": "docs/tasks"
+}
