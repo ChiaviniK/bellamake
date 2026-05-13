@@ -21,7 +21,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { NfceModal } from '@/components/NfceModal';
 
-const API_URL = 'http://localhost:3001';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 interface Product {
   id: string;
